@@ -2,6 +2,7 @@ package com.dcorsan.tarea6.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -44,4 +45,7 @@ public class Patient implements Serializable {
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date bornDate;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patientCode", cascade = CascadeType.ALL)
+	private List<Admission> admissions;
 }

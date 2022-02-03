@@ -1,6 +1,7 @@
 package com.dcorsan.tarea6.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -28,4 +29,7 @@ public class Doctor implements Serializable {
 	private String phoneNumber;
 	@Column(nullable = false)
 	private String specialty;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doctorCode", cascade = CascadeType.ALL)
+	private List<Admission> admissions;
 }
