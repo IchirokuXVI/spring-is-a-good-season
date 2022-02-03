@@ -34,4 +34,6 @@ public class Doctor implements Serializable {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doctorCode", cascade = CascadeType.ALL)
 	@Getter private List<Admission> admissions;
+
+	private static final long serialVersionUID = 1L;
 }

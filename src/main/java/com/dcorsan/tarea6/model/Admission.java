@@ -2,17 +2,11 @@ package com.dcorsan.tarea6.model;
 
 import java.io.Serializable;
 import java.util.Date;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -40,4 +34,6 @@ public class Admission implements Serializable {
 	
 	@Getter @Setter private String doctorCode;
 	@Getter @Setter private String patientCode;
+	
+	private static final long serialVersionUID = 1L;
 }
