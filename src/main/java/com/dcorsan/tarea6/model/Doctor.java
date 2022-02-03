@@ -7,29 +7,31 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "doctor")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Doctor implements Serializable {
-	private String code;
+	@Id
+	@Getter @Setter private String code;
 	@Column(nullable = false)
-	private String name;
+	@Getter @Setter private String name;
 	@Column(nullable = false)
-	private String surname;
+	@Getter @Setter private String surname;
 	@Column(nullable = false, unique = true)
-	private String phoneNumber;
+	@Getter @Setter private String phoneNumber;
 	@Column(nullable = false)
-	private String specialty;
+	@Getter @Setter private String specialty;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doctorCode", cascade = CascadeType.ALL)
-	private List<Admission> admissions;
+	@Getter private List<Admission> admissions;
 }

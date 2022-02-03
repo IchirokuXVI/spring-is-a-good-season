@@ -17,20 +17,27 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name = "admission")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Admission implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long code;
+	@Getter private long code;
 	
 	@Column(nullable = false)
-	private String roomCode;
+	@Getter @Setter private String roomCode;
 	
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
-	private Date date;
+	@Getter @Setter private Date date;
 	
-	private String doctorCode;
-	private String patientCode;
+	@Getter @Setter private String doctorCode;
+	@Getter @Setter private String patientCode;
 }
