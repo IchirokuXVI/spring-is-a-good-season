@@ -1,4 +1,4 @@
-package com.dcorsan_tarea6;
+package com.dcorsan.tarea6;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
