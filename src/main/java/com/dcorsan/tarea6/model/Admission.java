@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,8 +35,12 @@ public class Admission implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Getter @Setter private Date date;
 	
-	@Getter @Setter private String doctorCode;
-	@Getter @Setter private String patientCode;
+	@JoinColumn(name = "doctor_code")
+	@ManyToOne()
+	@Getter @Setter private Doctor doctor;
+	@JoinColumn(name = "patient_code")
+	@ManyToOne()
+	@Getter @Setter private Patient patient;
 	
 	private static final long serialVersionUID = 1L;
 }
