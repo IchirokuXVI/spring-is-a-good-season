@@ -32,7 +32,7 @@ public class Doctor implements Serializable {
 	@Column(nullable = false)
 	@Getter @Setter private String specialty;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doctorCode", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor", cascade = CascadeType.ALL)
 	@Getter private List<Admission> admissions;
 
 	private static final long serialVersionUID = 1L;

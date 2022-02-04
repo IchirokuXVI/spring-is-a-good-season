@@ -51,7 +51,7 @@ public class Patient implements Serializable {
 	@Getter @Setter private Date bornDate;
 	
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patientCode", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient", cascade = CascadeType.ALL)
 	@Getter private List<Admission> admissions;
 	
 	private static final long serialVersionUID = 1L;
