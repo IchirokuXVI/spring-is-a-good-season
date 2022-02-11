@@ -15,14 +15,18 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "patient")
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@EqualsAndHashCode(of="code")
 public class Patient implements Serializable {
 	@Id
 	@Getter @Setter private String code;
@@ -52,6 +56,7 @@ public class Patient implements Serializable {
 	
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient", cascade = CascadeType.ALL)
+	@ToString.Exclude
 	@Getter private List<Admission> admissions;
 	
 	private static final long serialVersionUID = 1L;

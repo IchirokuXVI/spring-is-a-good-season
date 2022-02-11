@@ -14,14 +14,18 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "admission")
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@EqualsAndHashCode(of="code")
 public class Admission implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
