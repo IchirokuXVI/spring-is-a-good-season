@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.dcorsan.tarea6.model.Admission;
 
-public interface AdmissionService {
+public interface AdmissionServiceI {
 	public List<Admission> getAll();
 	
 	public Admission find(final long id);

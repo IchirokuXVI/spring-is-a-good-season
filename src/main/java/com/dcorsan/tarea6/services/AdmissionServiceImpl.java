@@ -9,7 +9,7 @@ import com.dcorsan.tarea6.model.Admission;
 import com.dcorsan.tarea6.repository.AdmissionRepository;
 
 @Service
-public class AdmissionServiceImpl implements AdmissionService {
+public class AdmissionServiceImpl implements AdmissionServiceI {
 
 	@Autowired
 	AdmissionRepository admissionRepository;
