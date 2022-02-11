@@ -2,8 +2,11 @@ package com.dcorsan.tarea6.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.dcorsan.tarea6.model.Doctor;
 
+@Service
 public class DoctorServiceImpl implements DoctorServiceI {
 
 	@Override

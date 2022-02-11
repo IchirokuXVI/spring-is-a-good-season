@@ -2,8 +2,11 @@ package com.dcorsan.tarea6.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.dcorsan.tarea6.model.Admission;
 
+@Service
 public class AdmissionServiceImpl implements AdmissionService {
 
 	@Override
