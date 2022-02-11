@@ -2,47 +2,46 @@ package com.dcorsan.tarea6.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dcorsan.tarea6.model.Doctor;
+import com.dcorsan.tarea6.repository.DoctorRepository;
 
 @Service
 public class DoctorServiceImpl implements DoctorServiceI {
 
+	@Autowired
+	DoctorRepository doctorRepository;
+	
 	@Override
 	public List<Doctor> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return doctorRepository.findAll();
 	}
 
 	@Override
 	public Doctor find(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return doctorRepository.findById(id).get();
 	}
 
 	@Override
 	public List<Doctor> findBySpecialty(String specialty) {
-		// TODO Auto-generated method stub
-		return null;
+		return doctorRepository.findBySpecialty(specialty);
 	}
 
 	@Override
 	public void add(Doctor doctor) {
-		// TODO Auto-generated method stub
-		
+		doctorRepository.save(doctor);
 	}
 
 	@Override
 	public void update(Doctor doctor) {
-		// TODO Auto-generated method stub
-		
+		doctorRepository.save(doctor);
 	}
 
 	@Override
-	public Doctor delete(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public void delete(String id) {
+		doctorRepository.deleteById(id);
 	}
 
 }

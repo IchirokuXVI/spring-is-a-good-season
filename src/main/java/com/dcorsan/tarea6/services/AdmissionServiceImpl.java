@@ -2,41 +2,41 @@ package com.dcorsan.tarea6.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dcorsan.tarea6.model.Admission;
+import com.dcorsan.tarea6.repository.AdmissionRepository;
 
 @Service
 public class AdmissionServiceImpl implements AdmissionService {
 
+	@Autowired
+	AdmissionRepository admissionRepository;
+	
 	@Override
 	public List<Admission> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return admissionRepository.findAll();
 	}
 
 	@Override
 	public Admission find(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return admissionRepository.findById(id).get();
 	}
 
 	@Override
 	public void add(Admission admission) {
-		// TODO Auto-generated method stub
-
+		admissionRepository.save(admission);
 	}
 
 	@Override
 	public void update(Admission admission) {
-		// TODO Auto-generated method stub
-
+		admissionRepository.save(admission);
 	}
 
 	@Override
-	public Admission delete(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public void delete(long id) {
+		admissionRepository.deleteById(id);
 	}
 
 }

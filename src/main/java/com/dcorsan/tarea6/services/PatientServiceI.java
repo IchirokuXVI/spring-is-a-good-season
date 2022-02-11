@@ -13,5 +13,5 @@ public interface PatientServiceI {
 	
 	public void update(final Patient patient);
 	
-	public Patient delete(final String id);
+	public void delete(final String id);
 }

@@ -15,5 +15,5 @@ public interface DoctorServiceI {
 	
 	public void update(final Doctor doctor);
 	
-	public Doctor delete(final String id);
+	public void delete(final String id);
 }

@@ -13,5 +13,5 @@ public interface AdmissionService {
 	
 	public void update(final Admission admission);
 	
-	public Admission delete(final long id);
+	public void delete(final long id);
 }
