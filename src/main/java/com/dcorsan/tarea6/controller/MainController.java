@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("*")
 public class MainController {
 	@GetMapping
-	private String index() {
+	private String index(Model model) {
+		model.addAttribute("insertView", "index");
 		return "main";
 	}
 }

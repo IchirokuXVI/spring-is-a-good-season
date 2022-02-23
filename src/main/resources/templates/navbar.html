@@ -2,17 +2,30 @@
     <nav>
         <ul class="list-unstyled">
             <li>
-                <a>
-                    <i class="fas fa-home"></i>
+                <a th:href="@{/}">
+                    <i class="fas fa-home fa-fw"></i>
                     <span class="ml-3">Home</span>
                 </a>
             </li>
             <li>
-                <a id="logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span class="ml-3">Logout</span>
+                <a th:href="@{/patients}">
+                    <i class="fas fa-hospital-user fa-fw"></i>
+                    <span class="ml-3">Admissions</span>
                 </a>
             </li>
+            <li>
+                <a th:href="@{/patients}">
+                    <i class="fas fa-bed-pulse fa-fw"></i>
+                    <span class="ml-3">Patients</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/patients}">
+                    <i class="fas fa-user-doctor fa-fw"></i>
+                    <span class="ml-3">Doctors</span>
+                </a>
+            </li>
+            
         </ul>
     </nav>
 </div>

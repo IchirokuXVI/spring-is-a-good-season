@@ -23,7 +23,8 @@ public class PatientController {
 	private String index(Model model) {
 		model.addAttribute("patients", patientService.getAll());
 		
-		return "patient/index";
+		model.addAttribute("insertView", "patient/index");
+		return "main";
 	}
 	
 	@GetMapping("/create")
