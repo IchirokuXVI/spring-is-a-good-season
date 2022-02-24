@@ -25,6 +25,11 @@ public class PatientServiceImpl implements PatientServiceI {
 	}
 
 	@Override
+	public boolean exists(String id) {
+		return patientRepository.existsById(id);
+	}
+	
+	@Override
 	public void add(Patient patient) {
 		patientRepository.save(patient);
 	}

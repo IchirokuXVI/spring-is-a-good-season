@@ -13,6 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -29,6 +32,7 @@ import lombok.ToString;
 @EqualsAndHashCode(of="code")
 public class Patient implements Serializable {
 	@Id
+	@Column(nullable = false)
 	@Getter @Setter private String code;
 	
 	@Column(nullable = false)
@@ -44,14 +48,17 @@ public class Patient implements Serializable {
 	@Getter @Setter private String poblation;
 	
 	@Column(nullable = false)
+	@Size(min=5, max=5)
 	@Getter @Setter private String zipCode;
 	
 	// Might be null or even duplicated
 	// because the patient could be a child
+	@Size(min=0, max=9)
 	@Getter @Setter private String phoneNumber;
 	
-	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(nullable = false)
 	@Getter @Setter private Date bornDate;
 	
 	

@@ -8,6 +8,8 @@ public interface PatientServiceI {
 	public List<Patient> getAll();
 	
 	public Patient find(final String id);
+	
+	public boolean exists(String id);
 		
 	public void add(final Patient patient);
 	
