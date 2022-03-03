@@ -1,0 +1,15 @@
+<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+	<div class="card-header">Error</div>
+	<div class="card-body">
+		<h5 class="card-title">Lista de errores</h5>
+		<p class="card-text">
+			<div th:each="fieldError : ${fieldErrors}">
+				<div class="h6" th:text="${fieldError.key}"></div>
+					<ul th:each="error : ${fieldError.value}" class="list-group list-group-flush text-primary">
+						<li class="list-group-item" th:text="${error}"></li>
+					</ul>
+				</div>
+			</div>
+		</p>
+	</div>
+</div>

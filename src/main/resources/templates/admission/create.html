@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="col-10 mx-auto">
+		<h1>Creating new admissions</h1>
+		<form th:action="@{/admissions}" th:object="${admission}" th:method="POST">
+			<div class="form-group">
+				<label for="inputRoomCode">Room Code</label>
+	    		<input type="text" name="roomCode" class="form-control" id="inputRoomCode" placeholder="Room Code">
+			</div>
+			<div class="form-group">
+				<label for="inputDate">Date</label>
+	    		<input type="text" name="date" class="form-control" id="inputDate" placeholder="yyyy-MM-dd">
+			</div>
+			<div class="form-group">
+				<label for="inputPatient">Patient</label>
+				<select name="patient" class="form-control" id="inputPatient">
+					<option th:each="patient : ${patients}" th:value="${patient.code}" th:text="${patient.name}"/>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="inputDoctor">Doctor</label>
+				<select name="doctor" class="form-control" id="inputDoctor">
+					<option th:each="doctor : ${doctors}" th:value="${doctor.code}" th:text="${doctor.name}"/>
+				</select>
+			</div>
+			<input type="submit" class="btn btn-primary" value="Create new admission">
+		</form>
+	</div>
+</div>
