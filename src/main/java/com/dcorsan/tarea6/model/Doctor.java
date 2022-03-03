@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -46,6 +48,7 @@ public class Doctor implements Serializable {
 	@NotEmpty()
 	@Getter @Setter private String specialty;
 	
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor", cascade = CascadeType.ALL)
 	@ToString.Exclude
 	@Getter private List<Admission> admissions;

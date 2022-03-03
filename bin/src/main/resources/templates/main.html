@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:insert="headContent">
+		<title>Patients</title>
+	</head>
+	<body>
+		<div class="container-fluid min-vh-100" style="background-color:  #333330">
+		    <div class="row">
+		    	<div>
+		    		<div th:insert="navbar" id="navbarContainer" class="fixed-top"></div>
+		    	</div>
+		        
+		        <div id="main" class="col-10 mx-auto mt-4">
+		            <div th:insert="${insertView}"></div>
+		        </div>
+		    </div>
+		</div>
+		<scripts-replace th:replace="footerFiles"/>
+	</body>
+</html>

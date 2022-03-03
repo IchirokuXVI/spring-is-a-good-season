@@ -7,15 +7,17 @@
 				  		<span>Admissions</span>
 				  	</div>
 				  	<div class="col-2">
-				  		<select name="patient" class="form-control" id="inputPatient">
-							<option selected hidden disabled>Patient</option>
-							<option th:each="patient : ${patients}" th:value="${patient.code}" th:text="${patient.name}"/>
+				  		<select name="patient" class="form-control" id="inputPatient" required>
+							<option selected disabled hidden>Patient</option>
+							<option></option>
+							<option th:each="patient : ${patients}" th:value="${patient.code}" th:selected="${searchPatient != null && searchPatient.code == patient.code}" th:text="${patient.name}"/>
 						</select>
 				  	</div>
 				  	<div class="col-2">
-				  		<select name="doctor" class="form-control" id="inputDoctor">
-							<option selected hidden disabled>Doctor</option>
-							<option th:each="doctor : ${doctors}" th:value="${doctor.code}" th:text="${doctor.name}"/>
+				  		<select name="doctor" class="form-control" id="inputDoctor" required>
+							<option selected disabled hidden>Doctor</option>
+							<option></option>
+							<option th:each="doctor : ${doctors}" th:value="${doctor.code}" th:selected="${searchDoctor != null && searchDoctor.code == doctor.code}" th:text="${doctor.name}"/>
 						</select>
 				  	</div>
 				  	<div class="col-1">

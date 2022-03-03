@@ -1,0 +1,73 @@
+<div class="card-body">
+	<div class="card text-white bg-dark mb-3">
+	  	<div class="card-header">
+		  	<form>
+			  	<div class="row">
+				  	<div class="col-2">
+				  		<span>Admissions</span>
+				  	</div>
+				  	<div class="col-2">
+				  		<select name="patient" class="form-control" id="inputPatient">
+							<option selected hidden disabled>Patient</option>
+							<option th:each="patient : ${patients}" th:value="${patient.code}" th:text="${patient.name}"/>
+						</select>
+				  	</div>
+				  	<div class="col-2">
+				  		<select name="doctor" class="form-control" id="inputDoctor">
+							<option selected hidden disabled>Doctor</option>
+							<option th:each="doctor : ${doctors}" th:value="${doctor.code}" th:text="${doctor.name}"/>
+						</select>
+				  	</div>
+				  	<div class="col-1">
+				  		<input class="btn btn-secondary" type="submit" value="Search">
+				  	</div>
+				  	<div class="col-1 offset-3">
+					  	<a th:href="@{/admissions/create}" class="d-inline-block">
+							<button type="button" class="btn btn-success btn-lg">
+								<i class="fas fa-plus"></i>
+							</button>
+						</a>
+				  	</div>
+			  	</div>
+	  		</form>
+	  	</div>
+		<div class="card-body">
+			<table class="table table-striped table-dark">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Code</th>
+						<th scope="col">Room Code</th>
+						<th scope="col">Date</th>
+						<th scope="col">Patient</th>
+						<th scope="col">Doctor</th>
+						<th scope="col">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="admission : ${admissions}">
+						<tr>
+							<td scope="row" th:text="${admission.code}" />
+							<td scope="row" th:text="${admission.roomCode}" />
+							<td scope="row" th:text="${admission.date}" />
+							<td scope="row" th:text="${admission.patient.name}"/>
+							<td scope="row" th:text="${admission.doctor.name}"/>
+							<td>
+								<a th:href="@{/admissions/} + ${admission.code} + @{/edit}" class="d-inline-block">
+									<button type="submit" class="btn btn-warning">
+										<i class="fas fa-pencil"></i>
+									</button>
+								</a>
+								<form class="d-inline-block" th:action="@{/admissions/} + ${admission.code}" th:method="DELETE">
+									<button type="submit" class="btn btn-danger">
+										<i class="fas fa-trash"></i>
+									</button>
+								</form>
+							</td>
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
+			<a class="btn btn-primary" th:href="@{index}" role="button">Volver</a>
+		</div>
+	</div>
+</div>

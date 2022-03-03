@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="col-10 mx-auto">
+		<h1>Updating admission <span th:text="${admission.code}"/></h1>
+		<form th:action="@{/admissions/} + ${admission.code}" th:object="${admission}" th:method="PUT">
+			<div class="form-group">
+				<label for="inputRoomCode">Room Code</label>
+	    		<input type="text" name="roomCode" th:value="${admission.roomCode}" class="form-control" id="inputRoomCode" placeholder="Room Code">
+			</div>
+			<div class="form-group">
+				<label for="inputDate">Date</label>
+	    		<input type="text" name="date" th:value="${admission.date}" class="form-control" id="inputDate" placeholder="yyyy-MM-dd">
+			</div>
+			<div class="form-group">
+				<label for="inputPatient">Patient</label>
+				<select name="patient" class="form-control" id="inputPatient">
+					<option th:each="patient : ${patients}" th:selected="${admission.patient.code == patient.code}" th:value="${patient.code}" th:text="${patient.name}"/>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="inputDoctor">Doctor</label>
+				<select name="doctor" class="form-control" id="inputDoctor">
+					<option th:each="doctor : ${doctors}" th:selected="${admission.doctor.code == doctor.code}" th:value="${doctor.code}" th:text="${doctor.name}"/>
+				</select>
+			</div>
+			<input type="submit" class="btn btn-primary" value="Update doctor">
+		</form>
+	</div>
+</div>

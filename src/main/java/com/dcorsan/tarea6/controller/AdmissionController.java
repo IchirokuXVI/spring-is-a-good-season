@@ -38,12 +38,20 @@ public class AdmissionController {
 	@Autowired
 	private PatientServiceI patientService;
 	
+	/**
+	 * Binds a list of admissions correctly filtered with the specified patient and doctor
+	 * The list will have all the records if no filter is specified
+	 * @param patient Filter results based on the specified patient
+	 * @param doctor Filter results based on the specified doctor
+	 * @param model
+	 * @return Main view (with an attribute in model to insert another view within it)
+	 */
 	@GetMapping
 	private String index(@RequestParam(value = "patient", required = false) Patient patient, @RequestParam(value = "doctor", required = false) Doctor doctor, Model model) {
 		List<Admission> admissions = null;
 		if (patient != null || doctor != null) {
 			if (patient != null && doctor != null) {
-				
+				admissions = admissionService.getAll(patient, doctor);
 			} else if (patient != null) {
 				admissions = patient.getAdmissions();
 			} else {
@@ -71,6 +79,11 @@ public class AdmissionController {
 		return "main";
 	}
 	
+	/**
+	 * Returns the view for creating an admission
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/create")
 	private String create(Model model) {
 		
@@ -81,8 +94,15 @@ public class AdmissionController {
 		return "main";
 	}
 	
+	/**
+	 * Creates a new admission if the data is valid. Redirects to admissions index after creating the model
+	 * @param admission
+	 * @param result
+	 * @return
+	 * @throws ModelValidationException If the data is invalid
+	 */
 	@PostMapping
-	private String store(@Valid @ModelAttribute Admission admission, BindingResult result) throws Exception {
+	private String store(@Valid @ModelAttribute Admission admission, BindingResult result) throws ModelValidationException {
 		if (result.hasErrors())
 			throw new ModelValidationException(result.getFieldErrors());
 		
@@ -91,6 +111,12 @@ public class AdmissionController {
 		return "redirect:admissions";
 	}
 	
+	/**
+	 * Returns the view for updating an admission with all of its data
+	 * @param admission
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/{admission}/edit")
 	private String edit(@ModelAttribute Admission admission, Model model) {
 		model.addAttribute("admission", admission);
@@ -101,9 +127,17 @@ public class AdmissionController {
 		return "main";
 	}
 	
+	/**
+	 * Updates the specified admission. The admission code must be passed in the URL and the data through request parameters
+	 * @param admission
+	 * @param result
+	 * @param model
+	 * @return
+	 * @throws ModelValidationException
+	 */
 	@PutMapping("/{admission}")
 	@Transactional
-	private String update(@Valid @ModelAttribute Admission admission, BindingResult result, Model model) throws Exception {
+	private String update(@Valid @ModelAttribute Admission admission, BindingResult result, Model model) throws ModelValidationException {
 		if (result.hasErrors())
 			throw new ModelValidationException(result.getFieldErrors());
 		
@@ -112,6 +146,11 @@ public class AdmissionController {
 		return "redirect:";
 	}
 	
+	/**
+	 * Deletes the admission specified in the URL
+	 * @param code
+	 * @return
+	 */
 	@DeleteMapping("/{admission}")
 	private String destroy(@PathVariable("admission") long code) {
 		admissionService.delete(code);

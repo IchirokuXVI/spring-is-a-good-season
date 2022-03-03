@@ -38,6 +38,11 @@ public class PatientController {
 	//             dateFormat, false));
 	// }
 	
+	/**
+	 * Returns a view with all the patients
+	 * @param model
+	 * @return
+	 */
 	@GetMapping
 	private String index(Model model) {
 		model.addAttribute("patients", patientService.getAll());
@@ -46,6 +51,11 @@ public class PatientController {
 		return "main";
 	}
 	
+	/**
+	 * Returns a view for creating a new patient.
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/create")
 	private String create(Model model) {
 		
@@ -53,8 +63,16 @@ public class PatientController {
 		return "main";
 	}
 	
+	/**
+	 * Creates a new patient with the data specified in request parameters
+	 * Redirects to patients index after creating
+	 * @param patient Patient to be inserted
+	 * @param result
+	 * @return Redirect to patients index
+	 * @throws ModelValidationException If the data is invalid
+	 */
 	@PostMapping
-	private String store(@Valid @ModelAttribute Patient patient, BindingResult result, @RequestParam String bornDate) throws Exception {
+	private String store(@Valid @ModelAttribute Patient patient, BindingResult result) throws ModelValidationException {
 		if (result.hasErrors())
 			throw new ModelValidationException(result.getFieldErrors());
 		
@@ -63,6 +81,12 @@ public class PatientController {
 		return "redirect:patients";
 	}
 	
+	/**
+	 * Returns a view for updating the patient. The form is filled with the patient data
+	 * @param patient Patient to be updated. Data is gathered from this patient
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/{patient}/edit")
 	private String edit(@ModelAttribute Patient patient, Model model) {
 		model.addAttribute("patient", patient);
@@ -71,6 +95,15 @@ public class PatientController {
 		return "main";
 	}
 	
+	/**
+	 * Updates the given patient with the id set in the URL and the data in request parameters
+	 * Redirects to patients index after updating
+	 * @param patient Patient to be updated (code is automatically set with the one in the URL)
+	 * @param result
+	 * @param model
+	 * @return
+	 * @throws Exception If the data is invalid
+	 */
 	@PutMapping("/{patient}")
 	@Transactional
 	private String update(@Valid @ModelAttribute Patient patient, BindingResult result, Model model) throws Exception {
@@ -82,6 +115,11 @@ public class PatientController {
 		return "redirect:";
 	}
 	
+	/**
+	 * Deleted the specified patient in the URL
+	 * @param code Code of the patient to be deleted
+	 * @return
+	 */
 	@DeleteMapping("/{patient}")
 	private String destroy(@PathVariable("patient") String code) {
 		patientService.delete(code);

@@ -30,13 +30,13 @@ public class DoctorServiceImpl implements DoctorServiceI {
 	}
 
 	@Override
-	public void add(Doctor doctor) {
-		doctorRepository.save(doctor);
+	public Doctor add(Doctor doctor) {
+		return doctorRepository.save(doctor);
 	}
 
 	@Override
-	public void update(Doctor doctor) {
-		doctorRepository.save(doctor);
+	public Doctor update(Doctor doctor) {
+		return doctorRepository.save(doctor);
 	}
 
 	@Override

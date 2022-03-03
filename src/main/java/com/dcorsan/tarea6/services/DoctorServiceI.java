@@ -11,9 +11,9 @@ public interface DoctorServiceI {
 	
 	public List<Doctor> findBySpecialty(final String specialty);
 	
-	public void add(final Doctor doctor);
+	public Doctor add(final Doctor doctor);
 	
-	public void update(final Doctor doctor);
+	public Doctor update(final Doctor doctor);
 	
 	public void delete(final String id);
 }

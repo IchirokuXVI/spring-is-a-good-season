@@ -19,6 +19,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -70,6 +72,7 @@ public class Patient implements Serializable {
 	@Column(nullable = false)
 	@Getter @Setter private Date bornDate;
 	
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient", cascade = CascadeType.ALL)
 	@ToString.Exclude
 	@Getter private List<Admission> admissions;

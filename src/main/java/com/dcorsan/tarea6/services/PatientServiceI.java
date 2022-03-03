@@ -11,9 +11,9 @@ public interface PatientServiceI {
 	
 	public boolean exists(String id);
 		
-	public void add(final Patient patient);
+	public Patient add(final Patient patient);
 	
-	public void update(final Patient patient);
+	public Patient update(final Patient patient);
 	
 	public void delete(final String id);
 }

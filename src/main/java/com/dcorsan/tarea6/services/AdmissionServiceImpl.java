@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dcorsan.tarea6.model.Admission;
+import com.dcorsan.tarea6.model.Doctor;
+import com.dcorsan.tarea6.model.Patient;
 import com.dcorsan.tarea6.repository.AdmissionRepository;
 
 @Service
@@ -18,6 +20,11 @@ public class AdmissionServiceImpl implements AdmissionServiceI {
 	public List<Admission> getAll() {
 		return admissionRepository.findAll();
 	}
+	
+	@Override
+	public List<Admission> getAll(Patient patient, Doctor doctor) {
+		return admissionRepository.findByPatientAndDoctor(patient, doctor);
+	}
 
 	@Override
 	public Admission find(long id) {
@@ -25,13 +32,13 @@ public class AdmissionServiceImpl implements AdmissionServiceI {
 	}
 
 	@Override
-	public void add(Admission admission) {
-		admissionRepository.save(admission);
+	public Admission add(Admission admission) {
+		return admissionRepository.save(admission);
 	}
 
 	@Override
-	public void update(Admission admission) {
-		admissionRepository.save(admission);
+	public Admission update(Admission admission) {
+		return admissionRepository.save(admission);
 	}
 
 	@Override
